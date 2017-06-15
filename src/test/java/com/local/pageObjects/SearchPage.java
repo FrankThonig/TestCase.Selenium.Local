@@ -14,7 +14,7 @@ extends PageObject
 	@FindBy(
 			name=
 				"q")
-	private WebElement _SearchTextfield;
+	private WebElement _SearchTextField;
 
 	@FindBy(
 			id=
@@ -66,7 +66,7 @@ extends PageObject
 		
 		WebElementSafeActions.safeClear(
 	    		_WebDriver,
-	    		_SearchTextfield,
+	    		_SearchTextField,
 	    		_MaxWaitingTimeForLoadingElementInSeconds);
 		
 		
@@ -83,7 +83,7 @@ extends PageObject
 		
 		WebElementSafeActions.safeSendKeys(
 	    		_WebDriver,
-	    		_SearchTextfield,
+	    		_SearchTextField,
 	    		_MaxWaitingTimeForLoadingElementInSeconds,
 				searchTerm);
 		

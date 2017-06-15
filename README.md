@@ -525,7 +525,7 @@ The `SearchPage` class represents the search website. Following are the web elem
 @FindBy(
 	name=
 		"q")
-private WebElement _SearchTextfield;
+private WebElement _SearchTextField;
 
 @FindBy(
 	id=
