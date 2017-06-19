@@ -1,16 +1,17 @@
-# Automated Browser Test with Selenium
+# Browser Test Automation with Selenium
+## Test Case: Web Search
 
 ##### Table of Contents
-- [Testing Paradigms / Test Setup Specifications](#testing-paradigms--test-setup-specifications)  
-- [System / Software Environment](#system--software-environment)  
-  - [Third Party Software](#third-party-software)  
+- [Testing Paradigms / Test Setup Specifications](#testing-paradigms--test-setup-specifications)
+- [System / Software Environment](#system--software-environment)
+  - [Third Party Software](#third-party-software)
   - [Test Data Creation / Data Source](#test-data-creation--data-source)
   - [Execution / Deployment](#execution--deployment)
   - [General Notes](#general-notes)
 - [User Guide](#user-guide)
-  - [Test Case](#test-case)  
-  - [Implementation](#implementation)  
-  - [Execution / Deployment](#execution--deployment-1)  
+  - [Test Case](#test-case)
+  - [Implementation](#implementation)
+  - [Execution / Deployment](#execution--deployment-1)
 
 ## Testing Paradigms / Test Setup Specifications
 
@@ -112,7 +113,7 @@ The project comprehends one single test case.
 #### Test Sequence
 
 1. start browser
-2. navigate to search website
+2. navigate to search web site
 3. enter search term
 4. execute search process
 5. retrieve search results
@@ -141,7 +142,7 @@ The project contains one single test class `CountSearchResultsTestCase` which ag
 
 `CountSearchResultsTestCase.xml` is a TestNG XML file and contains test data that is common for all test runs:
 
-- URL of search website
+- URL of search web site
 - expected result `X` for assert
 
 ```
@@ -263,7 +264,7 @@ The `beforeMethod` takes care of instantiating a `WebDriverManagerFactory` which
 
 The test method `testSearchForSearchTermAndCountOccurencesInResults` manages the realization of the test sequence.
 
-First it takes care of starting the browser. For this purpose, an instance of a `WebDriver` implementation is retrieved.
+First, it takes care of starting the browser. For this purpose, an instance of a `WebDriver` implementation is retrieved.
 
 ```
 _WebDriverManager.set(
@@ -279,7 +280,7 @@ if(_WebDriverManager.get()!=null)
 }
 ```
 
-Then the browser is called to navigate to the search website.
+Then the browser is called to navigate to the search web site.
 
 ```
 WebDriverNavigate.navigateToURL(
@@ -503,12 +504,12 @@ Browser actions are executed as "safe" actions, i.e. before interacting with a c
 
 #### *Page Objects*
 
-The test case covers two websites:
+The test case covers two web sites:
 
-- search website
-- results website
+- search web site
+- results web site
 
-In the source code, each of these websites is represented by its own `[...]Page` class. For implementation the page object pattern was applied.
+In the source code, each of these web sites is represented by its own `[...]Page` class. For implementation the page object pattern was applied.
 
 ##### *`PageObject`* class
 
@@ -516,7 +517,7 @@ In the source code, each of these websites is represented by its own `[...]Page`
 
 ##### *`SearchPage`* class
 
-The `SearchPage` class represents the search website. Following are the web elements relevant to the test case:
+The `SearchPage` class represents the search web site. Following are the web elements relevant to the test case:
 
 - search text field
 - search button
@@ -535,7 +536,7 @@ private WebElement _SearchButton;
 
 ##### *`ResultsPage`* class
 
-The `ResultsPage` class represents the results website. Following are the web elements relevant to the test case:
+The `ResultsPage` class represents the results web site. Following are the web elements relevant to the test case:
 
 - results list
 
@@ -557,7 +558,7 @@ private List<WebElement> _ResultTitleWebElementsList;
 
 #### *Test Sequence Browser Automation*
 
-The test sequence is executed by the `testSearchForSearchTermAndCountOccurencesInResults` method of the `CountSearchResultsTestCase` class. Following are the test sequence parts concerning broser automation.
+The test sequence is executed by the `testSearchForSearchTermAndCountOccurencesInResults` method of the `CountSearchResultsTestCase` class. Following are the test sequence parts concerning browser automation.
 
 ```
 webDriver=
@@ -586,7 +587,7 @@ webDriver=
 
 The implementation for instantiating the `WebDriver` is shown in a different segment of this documentation.
 
-##### *Navigate to Search Website*
+##### *Navigate to Search Web Site*
 
 ```
 WebDriverNavigate.navigateToURL(
@@ -621,7 +622,7 @@ new SearchPage(
 		searchTerm)
 ```
 
-First the search field is cleared from any previous entries. Then the search term is entered. Finally the search button is pressed. The sequence of these steps is defined in the `SearchPage` class.
+First, the search field is cleared from any previous entries. Then the search term is entered. Finally the search button is pressed. The sequence of these steps is defined in the `SearchPage` class.
 
 ```
 public ResultsPage executeSearch(
