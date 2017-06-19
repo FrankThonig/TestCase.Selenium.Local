@@ -869,7 +869,7 @@ When applying the continuous integration, only *one* of them needs to be used.
 
 The project user needs to specify his Git repository URL and the credentials. The credentials can be managed via Jenkins.
 
-![](/img/Local_Freestyle_Config_Git.JPG)
+![](/img/Freestyle_Config_Git.JPG)
 
 *Maven configuration*
 
@@ -878,14 +878,14 @@ The project user needs to specify the name of the Maven Version. Here, the name 
 For the Goals the configuration gets set to `test`. Additionally, the behaviour in case of failing tests can be specified.
 Finally, the POM is set to the respective project directory.
 
-![](/img/Local_Freestyle_Config_Maven.JPG)
+![](/img/Freestyle_Config_Maven.JPG)
 
 *Test Result configuration*
 
 To configure the handling of test results, a post-build action needs bo be added.
 The project user needs to specify his TestNG XML report pattern to match this project's directory structure.
 
-![](/img/Local_Freestyle_Config_TestNG.JPG)
+![](/img/Freestyle_Config_TestNG.JPG)
 
 ##### *Pipeline*
 
@@ -916,11 +916,12 @@ String mvnHome = tool("mavenInstallation") + "\\bin";
 withEnv([
 	"PATH+WHATEVER=${javaHome}",
 	"PATH+WHATEVER2=${mvnHome}",
-	"JAVA_HOME=${javaHome}"]) {
+	"JAVA_HOME=${javaHome}"])
+	{
 	
-	bat "cd local && mvn -Dmaven.test.failure.ignore=true test"
+	bat "mvn -Dmaven.test.failure.ignore=true test"
 	
-}
+	}
 ```
 
 *Test Result configuration*
@@ -930,5 +931,5 @@ The project user needs to specify the report filename pattern to match this proj
 ```
 step([
 	$class: 'hudson.plugins.testng.Publisher',
-	reportFilenamePattern: '**/local/target/surefire-reports/testng-results.xml'])
+	reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'])
 ```

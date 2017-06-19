@@ -17,13 +17,13 @@ node
 			"JAVA_HOME=${javaHome}"])
 			{
 			
-			bat "cd local && mvn -Dmaven.test.failure.ignore=true test"
+			bat "mvn -Dmaven.test.failure.ignore=true test"
 			
 			}
 
 		step([
 			$class: 'hudson.plugins.testng.Publisher',
-			reportFilenamePattern: '**/local/target/surefire-reports/testng-results.xml'])
+			reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'])
 		
     }
 	
