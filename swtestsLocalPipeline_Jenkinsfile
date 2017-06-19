@@ -1,6 +1,8 @@
-node {
+node
+{
 
-    stage("Build") {
+    stage("Build")
+	{
 	
 		String javaHome = tool("jdkInstallation");		
 		String mvnHome = tool("mavenInstallation") + "\\bin";
@@ -12,11 +14,12 @@ node {
 		withEnv([
 			"PATH+WHATEVER=${javaHome}",
 			"PATH+WHATEVER2=${mvnHome}",
-			"JAVA_HOME=${javaHome}"]) {
+			"JAVA_HOME=${javaHome}"])
+			{
 			
 			bat "cd local && mvn -Dmaven.test.failure.ignore=true test"
 			
-		}
+			}
 
 		step([
 			$class: 'hudson.plugins.testng.Publisher',
